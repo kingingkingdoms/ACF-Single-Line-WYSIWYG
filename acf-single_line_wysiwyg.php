@@ -1,49 +1,25 @@
 <?php
-
 /*
-Plugin Name: Advanced Custom Fields: Single Line WYSIWYG
-Plugin URI: PLUGIN_URL
-Description: DESCRIPTION
+Plugin Name: Millionaire's Digest Single Line WYSIWYG Field (ACF Addon)
+Description: Add support for allowing the Advanced Custom Fields Pro Plugin to have a single line WYSIWYG editor.
 Version: 1.0.0
-Author: AUTHOR_NAME
-Author URI: AUTHOR_URL
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Author: K&L (Founder of the Millionaire's Digest)
+Author URI: https://millionairedigest.com/
 */
 
-
-
-
-// 1. set text domain
-// Reference: https://codex.wordpress.org/Function_Reference/load_plugin_textdomain
+/* Set the text domain */
 load_plugin_textdomain( 'acf-single_line_wysiwyg', false, dirname( plugin_basename(__FILE__) ) . '/lang/' ); 
 
-
-
-
-// 2. Include field type for ACF5
-// $version = 5 and can be ignored until ACF6 exists
+/* Include field type for ACF5 */
 function include_field_types_single_line_wysiwyg( $version ) {
-	
 	include_once('acf-single_line_wysiwyg-v5.php');
-	
 }
+add_action('acf/include_field_types', 'include_field_types_single_line_wysiwyg');
 
-add_action('acf/include_field_types', 'include_field_types_single_line_wysiwyg');	
-
-
-
-
-// 3. Include field type for ACF4
+/* Include field type for ACF4 */
 function register_fields_single_line_wysiwyg() {
-	
 	include_once('acf-single_line_wysiwyg-v4.php');
-	
 }
+add_action('acf/register_fields', 'register_fields_single_line_wysiwyg');
 
-add_action('acf/register_fields', 'register_fields_single_line_wysiwyg');	
-
-
-
-	
 ?>
